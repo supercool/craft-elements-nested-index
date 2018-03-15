@@ -159,13 +159,7 @@ Craft.NestedElementIndexSelectInput = Garnish.Base.extend({
     },
 
     getDisabledElementIds: function () {
-        var ids = this.getSelectedElementIds();
-
-        if (this.settings.sourceElementId) {
-            ids.push(this.settings.sourceElementId);
-        }
-
-        return ids;
+        return this.getSelectedElementIds().concat(this.settings.ignoreElementIds);
     },
 
     onModalSelect: function (elements) {
@@ -231,6 +225,7 @@ Craft.NestedElementIndexSelectInput = Garnish.Base.extend({
 
                     // Add element
                     this.addElement(elementId);
+                    
                     // Craft.elementIndex.updateElements();
                     this.updateDisabledElementsInModal();
 
@@ -275,7 +270,6 @@ Craft.NestedElementIndexSelectInput = Garnish.Base.extend({
         elementType: null,
         sources: null,
         criteria: {},
-        sourceElementId: null,
         viewMode: 'list',
         limit: null,
         showSiteMenu: false,
@@ -291,6 +285,7 @@ Craft.NestedElementIndexSelectInput = Garnish.Base.extend({
         onRemoveElement: $.noop,
 
         addAction: '',
-        disabledElementIds: []
+        disabledElementIds: [],
+        ignoreElementIds: []
     }
 });
