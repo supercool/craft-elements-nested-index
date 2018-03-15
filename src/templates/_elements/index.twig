@@ -1,0 +1,38 @@
+{% set sources = craft.app.elementIndexes.getSources(elementType, 'index') %}
+{% set customizableSources = (sources is not empty and indexJs.context == 'index' and currentUser.admin) %}
+{% set addButton = addButton is defined ? addButton : '<div class="btn add icon"></div>' %}
+{% if element.id %}
+    <div id="{{ container }}">
+        <div class="elementindex">
+            {% include 'nested-element-index/_elements/indexcontainer' with {
+                elementType: elementType,
+                sources: sources,
+                customizableSources: customizableSources,
+                addButton: addButton
+            } only %}
+        </div>
+    </div>
+
+{% else %}
+    <p><i>{{ "Please save element before making any associations."|t('element-list') }}</i></p>
+{% endif %}
+
+{% set inputVar = ('input-'~container)|namespaceInputId|replace({'-': '_'}) %}
+{% set indexVar = ('index-'~container)|namespaceInputId|replace({'-': '_'}) %}
+{% js %}
+    var {{ inputVar }} = new {{ inputJsClass }}($('#{{ container|namespaceInputId }}'), {{ inputJs|json_encode|raw }});
+
+    var {{ indexVar }} = new {{ indexJsClass }}(
+    '{{ elementType|e("js") }}',
+    $('#{{ container|namespaceInputId }}'),
+    {{ indexJs|json_encode|raw }}
+    );
+
+    {{ indexVar }}.on('afterAction', function(data) {
+    {{ inputVar }}.removeElements(data.params.elementIds);
+    });
+
+    {{ inputVar }}.on('selectElements', function(data) {
+    {{ indexVar }}.updateElements();
+    });
+{% endjs %}
