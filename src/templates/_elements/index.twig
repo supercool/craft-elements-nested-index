@@ -1,5 +1,5 @@
-{% set sources = craft.app.elementIndexes.getSources(elementType, 'index') %}
-{% set customizableSources = (sources is not empty and indexJs.context == 'index' and currentUser.admin) %}
+{% set sources = sources ?? craft.app.elementIndexes.getSources(elementType, 'index') %}
+{% set customizableSources = customizableSources ?? (sources is not empty and indexJs.context == 'index' and currentUser.admin) %}
 {% set addButton = addButton is defined ? addButton : '<div class="btn add icon"></div>' %}
 {% if element.id %}
     <div id="{{ container }}">
