@@ -1,6 +1,10 @@
 # Changelog
 All Notable changes to `flipboxdigital\craft-elements-nested-index` will be documented in this file
 
+## Unreleased
+### Added
+- Ability to override load more element action
+
 ## 1.0.0-rc.2 - 2018-04-04
 ### Added
 - `sources` param can be explicitly passed to the index template and used in favor of the defaults
