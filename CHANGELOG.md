@@ -1,7 +1,7 @@
 # Changelog
 All Notable changes to `flipboxdigital\craft-elements-nested-index` will be documented in this file
 
-## Unreleased
+## 1.0.0-rc.3 - 2018-04-17
 ### Added
 - Ability to override load more element action
 
