@@ -1,6 +1,10 @@
 # Changelog
 All Notable changes to `flipboxdigital\craft-elements-nested-index` will be documented in this file
 
+## Unreleased
+### Fixed
+- Aligning index sort options with changes made in Craft 3.0.11
+
 ## 1.0.0 - 2018-04-24
 - Production release
 
