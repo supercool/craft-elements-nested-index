@@ -15,7 +15,6 @@
     }
   ],
   "require": {
-    "php": ">=7.0",
     "flipboxfactory/craft-ember": "^2.0"
   },
   "require-dev": {
@@ -34,7 +33,8 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "1.0.x-dev"
+      "dev-develop": "2.0.x-dev",
+      "dev-master": "2.0.x-dev"
     }
   },
   "repositories": [

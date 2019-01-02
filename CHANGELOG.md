@@ -1,6 +1,10 @@
 # Changelog
 All Notable changes to `flipboxdigital\craft-elements-nested-index` will be documented in this file
 
+## 2.0.0 - 2019-01-02
+### Changed
+- Updated Ember dependency to version 2 
+
 ## 1.0.1 - 2018-06-13
 ### Fixed
 - Aligning index sort options with changes made in Craft 3.0.11
