@@ -1,7 +1,11 @@
 # Changelog
 All Notable changes to `flipboxdigital\craft-elements-nested-index` will be documented in this file
 
-## Unreleased
+## 2.1.0 - 2019-01-12
+### Added
+- `NestedIndexElementActionTrigger` js class to asset bundle allowing for nexted index actions
+
+## 2.0.0 - 2019-01-12
 ### Changed
 - Updated Ember dependency to version 2 
 

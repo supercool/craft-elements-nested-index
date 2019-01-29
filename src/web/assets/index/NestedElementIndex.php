@@ -25,7 +25,8 @@ class NestedElementIndex extends AssetBundle
     {
         $this->js = [
             'js/NestedElementIndex' . $this->dotJs(),
-            'js/NestedElementIndexSelectInput' . $this->dotJs()
+            'js/NestedElementIndexSelectInput' . $this->dotJs(),
+            'js/NestedIndexElementActionTrigger' . $this->dotJs(),
         ];
 
         $this->css = [
