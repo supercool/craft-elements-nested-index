@@ -2,6 +2,14 @@
 All Notable changes to `flipboxdigital\craft-elements-nested-index` will be documented in this file
 
 ## Unreleased
+### Fixed
+- error when a limit was set and counting elements
+
+## 2.1.0 - 2019-01-29
+### Added
+- element index trigger
+
+## 2.0.0 - 2019-01-02
 ### Changed
 - Updated Ember dependency to version 2 
 

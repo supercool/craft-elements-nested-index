@@ -43,7 +43,7 @@ Craft.NestedElementIndexSelectInput = Garnish.Base.extend({
     },
 
     canAddMoreElements: function () {
-        return (!this.settings.limit || this.$elements.length < this.settings.limit);
+        return (!this.settings.limit || this.elements.length < this.settings.limit);
     },
 
     updateAddElementsBtn: function () {
@@ -164,7 +164,7 @@ Craft.NestedElementIndexSelectInput = Garnish.Base.extend({
 
     onModalSelect: function (elements) {
         if (this.settings.limit) {
-            var slotsLeft = this.settings.limit - this.$elements.length;
+            var slotsLeft = this.settings.limit - this.elements.length;
 
             if (elements.length > slotsLeft) {
                 elements = elements.slice(0, slotsLeft);
