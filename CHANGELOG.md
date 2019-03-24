@@ -5,6 +5,9 @@ All Notable changes to `flipboxdigital\craft-elements-nested-index` will be docu
 ### Fixed
 - error when a limit was set and counting elements
 
+### Removed
+- copied table/thumb index view which were only used to set properties not available in previous versions of Craft.
+
 ## 2.1.0 - 2019-01-29
 ### Added
 - element index trigger

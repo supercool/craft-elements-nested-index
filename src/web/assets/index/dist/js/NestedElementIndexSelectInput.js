@@ -6,8 +6,6 @@
 Craft.NestedElementIndexSelectInput = Garnish.Base.extend({
 
     modal: null,
-    elements: [],
-
     $container: null,
     $addElementBtn: null,
 
@@ -15,6 +13,8 @@ Craft.NestedElementIndexSelectInput = Garnish.Base.extend({
 
     init: function ($container, settings) {
         this.$container = $container;
+        this.elements = [];
+
         this.setSettings(settings, Craft.NestedElementIndexSelectInput.defaults);
 
         if (settings.elements.length) {
@@ -22,12 +22,11 @@ Craft.NestedElementIndexSelectInput = Garnish.Base.extend({
         }
 
         // Apply the storage key prefix
-        if (this.settings.modalStorageKey) {
-            this.modalStorageKey = 'BaseElementSelectInput.' + this.settings.modalStorageKey;
+        if (this.settings.storageKey) {
+            this.modalStorageKey = 'NestedElementIndexSelectInput.' + this.settings.storageKey;
         }
 
         this.$addElementBtn = this.$container.find('.btn.add');
-
         if (this.$addElementBtn && this.settings.limit === 1) {
             this.$addElementBtn
                 .css('position', 'absolute')
@@ -38,6 +37,8 @@ Craft.NestedElementIndexSelectInput = Garnish.Base.extend({
         if (this.$addElementBtn) {
             this.addListener(this.$addElementBtn, 'activate', 'showModal');
         }
+
+        this.updateAddElementsBtn();
 
         this._initialized = true;
     },
@@ -95,6 +96,7 @@ Craft.NestedElementIndexSelectInput = Garnish.Base.extend({
         if (elementId === null) {
             return;
         }
+
         this.elements.push(elementId);
 
         this.updateAddElementsBtn();
