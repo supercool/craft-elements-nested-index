@@ -1,7 +1,10 @@
 # Changelog
 All Notable changes to `flipboxdigital\craft-elements-nested-index` will be documented in this file
 
-## Unreleased
+## 2.2.0 - 2019-03-26
+### Added
+- sortOptions can be passed through to the element index
+
 ### Fixed
 - error when a limit was set and counting elements
 
