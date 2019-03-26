@@ -1,11 +1,21 @@
 # Changelog
 All Notable changes to `flipboxdigital\craft-elements-nested-index` will be documented in this file
 
+## 2.2.0 - 2019-03-26
+### Added
+- sortOptions can be passed through to the element index
+
+### Fixed
+- error when a limit was set and counting elements
+
+### Removed
+- copied table/thumb index view which were only used to set properties not available in previous versions of Craft.
+
 ## 2.1.0 - 2019-01-12
 ### Added
 - `NestedIndexElementActionTrigger` js class to asset bundle allowing for nexted index actions
 
-## 2.0.0 - 2019-01-12
+## 2.0.0 - 2019-01-02
 ### Changed
 - Updated Ember dependency to version 2 
 

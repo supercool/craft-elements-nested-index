@@ -16,8 +16,7 @@
 {% if showSiteMenu == 'auto' %}
     {% set showSiteMenu = elementInstance.isLocalized() %}
 {% endif %}
-{% set sortOptions = elementInstance.sortOptions() %}
-
+{% set sortOptions = sortOptions ?? elementInstance.sortOptions() %}
 {% macro sortOptionLabel(sortOption) %}
     {{ sortOption.label ?? sortOption  }}
 {% endmacro %}

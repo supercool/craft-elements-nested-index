@@ -8,7 +8,8 @@
                 elementType: elementType,
                 sources: sources,
                 customizableSources: customizableSources,
-                addButton: addButton
+                addButton: addButton,
+                sortOptions: sortOptions ?? null
             } only %}
         </div>
     </div>
@@ -23,16 +24,16 @@
     var {{ inputVar }} = new {{ inputJsClass }}($('#{{ container|namespaceInputId }}'), {{ inputJs|json_encode|raw }});
 
     var {{ indexVar }} = new {{ indexJsClass }}(
-    '{{ elementType|e("js") }}',
-    $('#{{ container|namespaceInputId }}'),
-    {{ indexJs|json_encode|raw }}
+        '{{ elementType|e("js") }}',
+        $('#{{ container|namespaceInputId }}'),
+        {{ indexJs|json_encode|raw }}
     );
 
     {{ indexVar }}.on('afterAction', function(data) {
-    {{ inputVar }}.removeElements(data.params.elementIds);
+        {{ inputVar }}.removeElements(data.params.elementIds);
     });
 
     {{ inputVar }}.on('selectElements', function(data) {
-    {{ indexVar }}.updateElements();
+        {{ indexVar }}.updateElements();
     });
 {% endjs %}

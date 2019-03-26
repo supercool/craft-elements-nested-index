@@ -6,8 +6,6 @@
 Craft.NestedElementIndexSelectInput = Garnish.Base.extend({
 
     modal: null,
-    elements: [],
-
     $container: null,
     $addElementBtn: null,
 
@@ -15,6 +13,8 @@ Craft.NestedElementIndexSelectInput = Garnish.Base.extend({
 
     init: function ($container, settings) {
         this.$container = $container;
+        this.elements = [];
+
         this.setSettings(settings, Craft.NestedElementIndexSelectInput.defaults);
 
         if (settings.elements.length) {
@@ -22,12 +22,11 @@ Craft.NestedElementIndexSelectInput = Garnish.Base.extend({
         }
 
         // Apply the storage key prefix
-        if (this.settings.modalStorageKey) {
-            this.modalStorageKey = 'BaseElementSelectInput.' + this.settings.modalStorageKey;
+        if (this.settings.storageKey) {
+            this.modalStorageKey = 'NestedElementIndexSelectInput.' + this.settings.storageKey;
         }
 
         this.$addElementBtn = this.$container.find('.btn.add');
-
         if (this.$addElementBtn && this.settings.limit === 1) {
             this.$addElementBtn
                 .css('position', 'absolute')
@@ -39,11 +38,13 @@ Craft.NestedElementIndexSelectInput = Garnish.Base.extend({
             this.addListener(this.$addElementBtn, 'activate', 'showModal');
         }
 
+        this.updateAddElementsBtn();
+
         this._initialized = true;
     },
 
     canAddMoreElements: function () {
-        return (!this.settings.limit || this.$elements.length < this.settings.limit);
+        return (!this.settings.limit || this.elements.length < this.settings.limit);
     },
 
     updateAddElementsBtn: function () {
@@ -95,6 +96,7 @@ Craft.NestedElementIndexSelectInput = Garnish.Base.extend({
         if (elementId === null) {
             return;
         }
+
         this.elements.push(elementId);
 
         this.updateAddElementsBtn();
@@ -164,7 +166,7 @@ Craft.NestedElementIndexSelectInput = Garnish.Base.extend({
 
     onModalSelect: function (elements) {
         if (this.settings.limit) {
-            var slotsLeft = this.settings.limit - this.$elements.length;
+            var slotsLeft = this.settings.limit - this.elements.length;
 
             if (elements.length > slotsLeft) {
                 elements = elements.slice(0, slotsLeft);
