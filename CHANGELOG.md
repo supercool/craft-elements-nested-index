@@ -1,6 +1,10 @@
 # Changelog
 All Notable changes to `flipboxdigital\craft-elements-nested-index` will be documented in this file
 
+## 2.2.1 - 2019-04-12
+### Added
+- Association response errors will be displayed on screen via flash message.
+
 ## 2.2.0 - 2019-03-26
 ### Added
 - sortOptions can be passed through to the element index

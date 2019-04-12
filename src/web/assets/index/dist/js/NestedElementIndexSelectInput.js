@@ -222,7 +222,7 @@ Craft.NestedElementIndexSelectInput = Garnish.Base.extend({
             Craft.actionRequest('POST', this.settings.addAction, data, $.proxy(function (response, textStatus, jqXHR) {
                 if (jqXHR.status >= 200 && jqXHR.status < 300) {
                     Craft.cp.displayNotice(
-                        Craft.t('element-list', 'Association successful')
+                        Craft.t('element-list', 'Association successful.')
                     );
 
                     // Add element
@@ -233,9 +233,18 @@ Craft.NestedElementIndexSelectInput = Garnish.Base.extend({
 
                     this.onSelectElements(elements);
                 } else {
-                    Craft.cp.displayError(
-                        Craft.t('element-list', 'Association failed')
-                    );
+                    var errors = [];
+                    for (prop in jqXHR.responseJSON.errors) {
+                        errors.push(jqXHR.responseJSON.errors[prop]);
+                    }
+
+                    var message = Craft.t('element-list', 'Association failed.');
+
+                    if (errors.length) {
+                        message += ' ' + Craft.t('element-list', 'Errors: ') + errors.join(', ');
+                    }
+
+                    Craft.cp.displayError(message);
                 }
             }, this));
         }
