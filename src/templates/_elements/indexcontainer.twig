@@ -10,9 +10,10 @@
 ]) %}
 
 {% set elementInstance = craft.app.elements.createElement(elementType) %}
-{% set context = context is defined ? context : 'index' %}
+{% set context = context ?? 'index' %}
+{% set showSourceMenu = showSourceMenu ?? sources|length > 1 %}
 {% set showStatusMenu = (showStatusMenu is defined and showStatusMenu != 'auto' ? showStatusMenu : elementInstance.hasStatuses()) %}
-{% set showSiteMenu = (craft.app.getIsMultiSite() ? (showSiteMenu ?? 'auto') : false) %}
+{% set showSiteMenu = showSiteMenu ?? false %}
 {% if showSiteMenu == 'auto' %}
     {% set showSiteMenu = elementInstance.isLocalized() %}
 {% endif %}
@@ -29,7 +30,7 @@
                 <div>{{ addButton|raw }}</div>
             {% endif %}
             {% if sources is not empty %}
-                <div>
+                <div{% if not showSourceMenu %} class="hidden"{% endif %}>
                     <div class="btn menubtn statemenubtn"><span class="state"></span>{{ "All"|t('app') }}</div>
                     <div class="menu sidebar">
                         <nav>
