@@ -1,6 +1,13 @@
 # Changelog
 All Notable changes to `flipboxdigital\craft-elements-nested-index` will be documented in this file
 
+## 2.2.2 - 2019-04-30
+### Changed
+- Site menu is hidden by default
+
+### Added
+- Option to hide source menu explicitly
+
 ## 2.2.1 - 2019-04-12
 ### Added
 - Association response errors will be displayed on screen via flash message.
