@@ -30,7 +30,7 @@
                 <div>{{ addButton|raw }}</div>
             {% endif %}
             {% if sources is not empty %}
-                <div{% if not showSourceMenu %} class="hidden"{% endif %}>
+                <div{% if not showSourceMenu %} style="display: none;"{% endif %}>
                     <div class="btn menubtn statemenubtn"><span class="state"></span>{{ "All"|t('app') }}</div>
                     <div class="menu sidebar">
                         <nav>
