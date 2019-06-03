@@ -151,9 +151,17 @@ Craft.NestedElementIndexSelectInput = Garnish.Base.extend({
             criteria: this.settings.criteria,
             multiSelect: (this.settings.limit !== 1),
             showSiteMenu: this.settings.showSiteMenu,
-            disabledElementIds: this.getDisabledElementIds(),
+            disabledElementIds: this.getModalDisabledElementIds(),
             onSelect: $.proxy(this, 'onModalSelect')
         }, this.settings.modalSettings);
+    },
+
+    getModalDisabledElementIds: function () {
+        if (this.settings.sendDisabledModalElementsAsString) {
+            return this.getDisabledElementIds().join(',');
+        }
+
+        return this.getDisabledElementIds();
     },
 
     getSelectedElementIds: function () {
@@ -284,6 +292,7 @@ Craft.NestedElementIndexSelectInput = Garnish.Base.extend({
         viewMode: 'list',
         limit: null,
         showSiteMenu: false,
+        sendDisabledModalElementsAsString: false,
         modalStorageKey: null,
         modalSettings: {},
 

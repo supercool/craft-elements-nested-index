@@ -1,6 +1,10 @@
 # Changelog
 All Notable changes to `flipboxdigital\craft-elements-nested-index` will be documented in this file
 
+## Unreleased
+### Added
+- Index select setting to send disabled element ids as a comma delimited string instead of an array.
+
 ## 2.2.2 - 2019-04-30
 ### Changed
 - Site menu is hidden by default
