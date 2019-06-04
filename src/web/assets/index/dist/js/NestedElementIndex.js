@@ -17,6 +17,11 @@ Craft.NestedElementIndex = Craft.BaseElementIndex.extend({
         return this.base(mode, $.extend(settings, this.settings.viewSettings));
     },
 
+    _updateView: function(params, response) {
+        this.base(params, response);
+        this.settings.onUpdateView(response.html);
+    },
+
     // UI state handlers
     // -------------------------------------------------------------------------
 
@@ -29,6 +34,7 @@ Craft.NestedElementIndex = Craft.BaseElementIndex.extend({
 }, {
     defaults: {
         viewParams: {},
-        viewSettings: {}
+        viewSettings: {},
+        onUpdateView: $.noop,
     }
 });
