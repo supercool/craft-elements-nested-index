@@ -7,15 +7,14 @@ Craft.NestedElementIndex = Craft.BaseElementIndex.extend({
 
     init: function (elementType, $container, settings) {
         this.base(elementType, $container, $.extend({}, Craft.NestedElementIndex.defaults, settings));
-
-        // Legacy way of setting the load more elements action
-        if(this.settings.viewSettings && this.settings.viewSettings.loadMoreAction) {
-            this.settings.loadMoreElementsAction = this.settings.viewSettings.loadMoreAction;
-        }
     },
 
     getViewParams: function () {
         return $.extend(this.base(), this.settings.viewParams);
+    },
+
+    createView: function(mode, settings) {
+        return this.base(mode, $.extend(settings, this.settings.viewSettings));
     },
 
     // UI state handlers
@@ -29,6 +28,7 @@ Craft.NestedElementIndex = Craft.BaseElementIndex.extend({
 
 }, {
     defaults: {
-        viewParams: []
+        viewParams: {},
+        viewSettings: {}
     }
 });
