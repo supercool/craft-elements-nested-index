@@ -1,11 +1,14 @@
 # Changelog
 All Notable changes to `flipboxdigital\craft-elements-nested-index` will be documented in this file
 
-## 2.3.1 - 2019-06-04
+## 2.3.1 - 2019-06-05
 ### Fixed
 - View settings were not getting passed correctly
 
-## 2.3.0 - 2019-05-03
+### Added
+- Index template can be extended via twig as it now contains blocks
+
+## 2.3.0 - 2019-06-03
 ### Added
 - Index select setting to send disabled element ids as a comma delimited string instead of an array.
 
