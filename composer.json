@@ -1,6 +1,6 @@
 {
-  "name": "flipboxfactory/craft-elements-nested-index",
-  "version": "2.3.1",
+  "name": "flipboxfactory/craft-elements-nested-index-supercool",
+  "version": "2.3.2",
   "description": "Nested Element Index for Craft CMS",
   "keywords": [
     "craft cms",
@@ -15,7 +15,7 @@
     }
   ],
   "require": {
-    "flipboxfactory/craft-ember": "^2.0"
+    "flipboxfactory/craft-ember-supercool": "^2.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^5.0",
