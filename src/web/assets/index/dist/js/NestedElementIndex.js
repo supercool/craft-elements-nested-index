@@ -7,7 +7,6 @@ Craft.NestedElementIndex = Craft.BaseElementIndex.extend({
 
     init: function (elementType, $container, settings) {
         this.base(elementType, $container, $.extend({}, Craft.NestedElementIndex.defaults, settings));
-    console.error(this.$countSpinner);
     },
 
     initSources: function () {
