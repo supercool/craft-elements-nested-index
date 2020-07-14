@@ -1,6 +1,14 @@
 @charset "UTF-8";
 @import "../../../../../../../vendor/craftcms/cms/lib/craftcms-sass/mixins";
 
+.nested-elements {
+  margin-top: 24px;
+}
+
+.nested-element-footer { z-index: 1; margin: 0 -24px -24px; padding: 10px 24px; background-color: #f3f7fc; border-radius: 0 0 5px 5px; }
+.nested-element-footer:empty { display: none; }
+.nested-element-footer > *, .nested-element-footer .flex > * { margin-bottom: 0; }
+
 .manage-categories {
   opacity: .075;
   cursor: pointer;

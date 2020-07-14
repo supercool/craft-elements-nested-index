@@ -1,6 +1,10 @@
 # Changelog
 All Notable changes to `flipboxdigital\craft-elements-nested-index` will be documented in this file
 
+## 2.4.0 - 2020-07-14
+### Changed
+- Added support for Craft 3.4 style changes and set as min.
+
 ## 2.3.1 - 2019-06-05
 ### Fixed
 - View settings were not getting passed correctly
