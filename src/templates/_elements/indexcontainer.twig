@@ -24,69 +24,72 @@
 {% from _self import sortOptionLabel %}
 
 <div class="main">
-    <div class="toolbar">
-        <div class="flex">
-            {% if addButton is defined and addButton %}
-                <div>{{ addButton|raw }}</div>
-            {% endif %}
-            {% if sources is not empty %}
-                <div{% if not showSourceMenu %} style="display: none;"{% endif %}>
-                    <div class="btn menubtn statemenubtn"><span class="state"></span>{{ "All"|t('app') }}</div>
-                    <div class="menu sidebar">
-                        <nav>
-                            {% include "_elements/sources" with {
-                                sources: sources
-                            } only %}
-                        </nav>
-                        {% if customizableSources %}
-                            <div class="heading"></div>
-                            <a class="customize-sources settings icon" title="{{ 'Customize sources'|t }}"></a>
-                        {% endif %}
-                    </div>
+    <div class="toolbar flex flex-nowrap">
+        {% if addButton is defined and addButton %}
+            <div>{{ addButton|raw }}</div>
+        {% endif %}
+        {% if sources is not empty %}
+            <div{% if not showSourceMenu %} style="display: none;"{% endif %}>
+                <div class="btn menubtn statemenubtn"><span class="state"></span>{{ "All"|t('app') }}</div>
+                <div class="menu sidebar">
+                    <nav>
+                        {% include "_elements/sources" with {
+                            sources: sources
+                        } only %}
+                    </nav>
+                    {% if customizableSources %}
+                        <div class="heading"></div>
+                        <a class="customize-sources settings icon" title="{{ 'Customize sources'|t }}"></a>
+                    {% endif %}
                 </div>
-            {% endif %}
-            {% if showStatusMenu %}
-                <div>
-                    <div class="btn menubtn statusmenubtn"><span class="status"></span>{{ "All"|t('app') }}</div>
-                    <div class="menu">
-                        <ul class="padded">
-                            <li><a data-status="" class="sel"><span class="status"></span>{{ "All"|t('app') }}</a></li>
-                            {% for status, info in elementInstance.statuses() %}
-                                {% set label = info.label ?? info %}
-                                {% set color = info.color ?? '' %}
-                                <li><a data-status="{{ status }}"><span class="status {{ status }} {{ color }}"></span>{{ label }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            {% endif %}
-            {% if showSiteMenu %}
-                {% include "_elements/sitemenu" %}
-            {% endif %}
-            <div class="flex-grow texticon search icon clearable">
-                {{ text({
-                    placeholder: "Search"|t('app')
-                }) }}
-                <div class="clear hidden" title="{{ 'Clear'|t('app') }}"></div>
             </div>
+        {% endif %}
+        {% if showStatusMenu %}
             <div>
-                <div class="btn menubtn sortmenubtn"{% if sortOptions %} title="{{ 'Sort by {attribute}'|t('app', { attribute: sortOptionLabel(sortOptions|first) }) }}"{% endif %} data-icon="asc">{{ sortOptions ? sortOptionLabel(sortOptions|first) }}</div>
+                <div class="btn menubtn statusmenubtn"><span class="status"></span>{{ "All"|t('app') }}</div>
                 <div class="menu">
-                    <ul class="padded sort-attributes">
-                        {% for key, sortOption in sortOptions %}
-                            <li><a{% if loop.first %} class="sel"{% endif %} data-attr="{{ sortOption.attribute ?? sortOption.orderBy ?? key }}">{{ sortOptionLabel(sortOption) }}</a></li>
+                    <ul class="padded">
+                        <li><a data-status="" class="sel"><span class="status"></span>{{ "All"|t('app') }}</a></li>
+                        {% for status, info in elementInstance.statuses() %}
+                            {% set label = info.label ?? info %}
+                            {% set color = info.color ?? '' %}
+                            <li><a data-status="{{ status }}"><span class="status {{ status }} {{ color }}"></span>{{ label }}</a></li>
                         {% endfor %}
                     </ul>
-                    <hr>
-                    <ul class="padded sort-directions">
-                        <li><a data-dir="asc" class="sel">{{ "Ascending"|t('app') }}</a></li>
-                        <li><a data-dir="desc">{{ "Descending"|t('app') }}</a></li>
-                    </ul>
                 </div>
             </div>
-            <div class="spinner invisible"></div>
+        {% endif %}
+        {% if showSiteMenu %}
+            {% include "_elements/sitemenu" %}
+        {% endif %}
+        <div class="flex-grow texticon search icon clearable">
+            {{ text({
+                placeholder: "Search"|t('app')
+            }) }}
+            <div class="clear hidden" title="{{ 'Clear'|t('app') }}"></div>
+        </div>
+        <div>
+            <div class="btn menubtn sortmenubtn"{% if sortOptions %} title="{{ 'Sort by {attribute}'|t('app', { attribute: sortOptionLabel(sortOptions|first) }) }}"{% endif %} data-icon="asc">{{ sortOptions ? sortOptionLabel(sortOptions|first) }}</div>
+            <div class="menu">
+                <ul class="padded sort-attributes">
+                    {% for key, sortOption in sortOptions %}
+                        <li><a{% if loop.first %} class="sel"{% endif %} data-attr="{{ sortOption.attribute ?? sortOption.orderBy ?? key }}">{{ sortOptionLabel(sortOption) }}</a></li>
+                    {% endfor %}
+                </ul>
+                <hr>
+                <ul class="padded sort-directions">
+                    <li><a data-dir="asc" class="sel">{{ "Ascending"|t('app') }}</a></li>
+                    <li><a data-dir="desc">{{ "Descending"|t('app') }}</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 
-    <div class="elements"></div>
+    <div class="elements nested-elements"></div>
+
+    <div class="nested-element-footer flex">
+        <div class="count-spinner spinner hidden"></div>
+        <div class="count-container light flex-grow">&nbsp;</div>
+        <div class="export-btn btn hidden">{{ 'Export…'|t('app') }}</div>
+    </div>
 </div>
