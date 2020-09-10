@@ -1,6 +1,11 @@
 # Changelog
 All Notable changes to `flipboxdigital\craft-elements-nested-index` will be documented in this file
 
+## 2.4.1 - 2020-08-19
+### Fixed
+- Error thrown when editing entry for Craft 3.5.x.  [Ref](https://github.com/craftcms/cms/commit/8678b515a539cef7d20e7464fdb0b62fe8179d52#diff-184ce609400df0ea3b938a89b899ba1dL4)
+
+
 ## 2.4.0 - 2020-07-14
 ### Changed
 - Added support for Craft 3.4 style changes and set as min.
